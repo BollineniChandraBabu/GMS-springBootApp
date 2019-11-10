@@ -1,4 +1,5 @@
 package com.revature.grademanagementsystem.configuration;
+
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
@@ -16,33 +17,33 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class DataSourceConfig {
-	 @Bean
-	    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
-	        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-	        em.setDataSource(dataSource);
-	        em.setPackagesToScan(new String[] { "com.revature" });
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+		em.setDataSource(dataSource);
+		em.setPackagesToScan(new String[] { "com.revature" });
 
-	        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-	        em.setJpaVendorAdapter(vendorAdapter);
-	        em.setJpaProperties(hibernateProperties());
+		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		em.setJpaVendorAdapter(vendorAdapter);
+		em.setJpaProperties(hibernateProperties());
 
-	        return em;
-	    }
+		return em;
+	}
 
-	    @Bean
-	    public Properties hibernateProperties() {
-	        Properties properties = new Properties();
-	        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-	        properties.put("hibernate.format_sql", "true");
-	        return properties;
-	    }
+	@Bean
+	public Properties hibernateProperties() {
+		Properties properties = new Properties();
+		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+		properties.put("hibernate.format_sql", "true");
+		return properties;
+	}
 
-	    @Bean
-	    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
-	        JpaTransactionManager transactionManager = new JpaTransactionManager();
-	        transactionManager.setEntityManagerFactory(emf);
+	@Bean
+	public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(emf);
 
-	        return transactionManager;
-	    }
+		return transactionManager;
+	}
 
 }

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class GradesTest {
 private Grades grades=new Grades();
+private Grades grades1=new Grades();
 	@Test
 	public void testGetGrade() {
 		grades.setGrade("A");
@@ -29,5 +30,21 @@ private Grades grades=new Grades();
 	public void testGrades() {
 		assertNotNull(grades);
 	}
-
+	@Test
+	public void testHashcode()
+	{
+		assertTrue( grades.hashCode()==grades1.hashCode() );
+	}
+	
+	@Test
+	public void canEqualTest() 
+	{
+	    assertTrue(grades.canEqual(grades1));
+	}
+	
+	@Test
+	public void EqualTest() 
+	{
+	    assertTrue(grades.equals(grades1));
+	}
 }

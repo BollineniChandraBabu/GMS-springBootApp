@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class StudentsTest {
 	private Students students=new Students();
+	private Students students1=new Students();
 
 	@Test
 	public void testGetRegistrationNumber() {
@@ -56,5 +57,21 @@ assertEquals(true, students.isActive());
 	public void testStudents() {
 		assertNotNull(students);
 	}
-
+	@Test
+	public void testHashcode()
+	{
+		assertTrue( students.hashCode()==students1.hashCode() );
+	}
+	
+	@Test
+	public void canEqualTest() 
+	{
+	    assertTrue(students.canEqual(students1));
+	}
+	
+	@Test
+	public void EqualTest() 
+	{
+	    assertTrue(students.equals(students1));
+	}
 }

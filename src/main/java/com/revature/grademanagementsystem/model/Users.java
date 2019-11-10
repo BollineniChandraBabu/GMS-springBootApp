@@ -14,30 +14,30 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class Users {
-	 @Id
-	    @GeneratedValue(strategy=GenerationType.IDENTITY)
-	    @Column(name="id")
-private int id;
-	 @Column(name="name")
-private String name;
-	 @Column(name="fatherName")
-private String fatherName;
-	 @Column(name="email")
-private String email;
-	 @Column(name="password")
-private String password;
-	 @Column(name="roles")
-private boolean roles;
-	 @Column(name="dateOfJoining")
-private LocalDate dateOfJoining;
-	 
-	 @OneToOne(fetch = FetchType.EAGER)
-	 @JoinColumn(name = "department")
-private Departments department;
-@Column(name="active")
-private boolean active;
-@Column(name="activeAccount")
-private boolean activeAccount;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	private int id;
+	@Column(name = "name")
+	private String name;
+	@Column(name = "fatherName")
+	private String fatherName;
+	@Column(name = "email")
+	private String email;
+	@Column(name = "password")
+	private String password;
+	@Column(name = "roles")
+	private boolean roles;
+	@Column(name = "dateOfJoining")
+	private LocalDate dateOfJoining;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "department")
+	private Departments department;
+	@Column(name = "active")
+	private boolean active;
+	@Column(name = "activeAccount")
+	private boolean activeAccount;
 }

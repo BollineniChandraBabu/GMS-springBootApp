@@ -1,21 +1,17 @@
 package com.revature.grademanagementsystem.controller;
 
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.revature.grademanagementsystem.exception.ServiceException;
 import com.revature.grademanagementsystem.model.Marks;
 import com.revature.grademanagementsystem.model.Students;
 import com.revature.grademanagementsystem.model.Subjects;
 import com.revature.grademanagementsystem.services.impl.MarksServicesImpl;
-
 
 @RestController
 public class MarksController {
@@ -24,20 +20,20 @@ public class MarksController {
 
 	@GetMapping("viewtop")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<Marks> findMaxMarks()  {
+	public List<Marks> findMaxMarks() {
 		return marksServices.findMaxMarks();
 	}
 
 	@GetMapping("viewallmarks")
 	@ResponseStatus(code = HttpStatus.OK)
-	public List<Marks> viewAllMarks(){
+	public List<Marks> viewAllMarks() {
 		return marksServices.viewAllMarks();
 	}
 
 	@GetMapping("insertMarks")
 	@ResponseStatus(code = HttpStatus.OK)
 	public boolean insertOrUpdate(@RequestParam("id") int regno, @RequestParam("subjectdetails") int sid,
-			@RequestParam("marks") int mark) throws ServiceException, SQLIntegrityConstraintViolationException {
+			@RequestParam("marks") int mark) {
 		Marks marks = new Marks();
 		Students student = new Students();
 		student.setRegistrationNumber(regno);
@@ -46,9 +42,8 @@ public class MarksController {
 		subjects.setId(sid);
 		marks.setSubjects(subjects);
 		marks.setMarks(mark);
-		boolean result= marksServices.insertOrUpdate(marks);
-		System.out.println("result:"+result);
-		return result;
+		return marksServices.insertOrUpdate(marks);
+		
 	}
 
 	@GetMapping("viewBySubjectCode")

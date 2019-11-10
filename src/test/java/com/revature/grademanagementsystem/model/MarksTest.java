@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class MarksTest {
 	private Marks marks =new Marks();
+	private Marks marks1 =new Marks();
 	@Test
 	public void testGetId() {	
 		marks.setId(1);
@@ -36,5 +37,21 @@ assertEquals(80,marks.getMarks());
 	public void testMarks() {
 assertNotNull(marks);
 	}
-
+	@Test
+	public void testHashcode()
+	{
+		assertTrue( marks.hashCode()==marks1.hashCode() );
+	}
+	
+	@Test
+	public void canEqualTest() 
+	{
+	    assertTrue(marks.canEqual(marks1));
+	}
+	
+	@Test
+	public void EqualTest() 
+	{
+	    assertTrue(marks.equals(marks1));
+	}
 }

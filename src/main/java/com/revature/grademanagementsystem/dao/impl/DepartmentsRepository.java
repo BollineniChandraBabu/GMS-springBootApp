@@ -13,8 +13,9 @@ import com.revature.grademanagementsystem.model.Departments;
 @Transactional
 @Repository
 public interface DepartmentsRepository extends JpaRepository<Departments, Integer> {
-	@Query(value="select * from departments order by id", nativeQuery = true)
+	@Query(value = "select * from departments order by id", nativeQuery = true)
 	List<Departments> viewDepartments();
-	@Query(value="select id,name from departments where id=:id",nativeQuery = true)
-	Departments checkDepartment(@Param("id")int id);
+
+	@Query(value = "select id,name from departments where id=:id", nativeQuery = true)
+	Departments checkDepartment(@Param("id") int id);
 }

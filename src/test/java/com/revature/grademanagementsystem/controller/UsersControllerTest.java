@@ -7,6 +7,8 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -30,20 +32,14 @@ import static org.mockito.ArgumentMatchers.anyString;
 public class UsersControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
-
 	@MockBean
 	private UsersServicesImpl usersServiceMock;
-
 	@InjectMocks
 	UsersControllerTest usersControllerTest;
-
 	@Before
 	public void setUp() {
-
 		MockitoAnnotations.initMocks(this);
 	}
-	
-	
 	
 	@Test
 	public void testLoginController() throws Exception {
@@ -109,12 +105,19 @@ public class UsersControllerTest {
 
 	@Test
 	public void testViewAllUsers() throws Exception {
+		List<Users> usersList=new ArrayList<Users>();
 		Users userObj = new Users();
 		userObj.setEmail("chandra@gmail.com.com");
 		userObj.setPassword("chandra");
 		userObj.setId(1);
-		when(usersServiceMock.findIdByMail(anyString())).thenReturn(1);
-		String userJson = new ObjectMapper().writeValueAsString(userObj);
+		usersList.add(userObj);
+		Users userObj1 = new Users();
+		userObj1.setEmail("cs@gmail.com.com");
+		userObj1.setPassword("cs");
+		userObj1.setId(2);
+		usersList.add(userObj1);
+		when(usersServiceMock.viewAllUsers()).thenReturn(usersList);
+		String userJson = new ObjectMapper().writeValueAsString(usersList);
 		mockMvc.perform(get("/viewEmployees").contentType(MediaType.APPLICATION_JSON).content(userJson))
 				.andExpect(status().isOk());	
 	}

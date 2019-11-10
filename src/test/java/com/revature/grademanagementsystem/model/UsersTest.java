@@ -9,6 +9,7 @@ import org.junit.Test;
 
 public class UsersTest {
 	private Users user = new Users();
+	private Users user1 = new Users();
 	@Test
 	public void testGetId() {	
 		user.setId(1);
@@ -75,4 +76,23 @@ public class UsersTest {
 	public void testUsers() {
 		assertNotNull(user);
 	}
+	
+	@Test
+	public void testHashcode()
+	{
+		assertTrue( user.hashCode()==user1.hashCode() );
+	}
+	
+	@Test
+	public void canEqualTest() 
+	{
+	    assertTrue(user.canEqual(user1));
+	}
+	
+	@Test
+	public void EqualTest() 
+	{
+	    assertTrue(user.equals(user1));
+	}
+	
 }

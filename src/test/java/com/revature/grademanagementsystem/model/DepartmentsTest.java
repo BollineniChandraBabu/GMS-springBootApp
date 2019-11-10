@@ -8,6 +8,7 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 
 public class DepartmentsTest {
 private Departments departments = new Departments();
+private Departments departments1=new Departments();
 
 	
 	@Test
@@ -38,21 +39,18 @@ private Departments departments = new Departments();
 	@Test
 	public void testHashcode()
 	{
-		Departments departments1=new Departments();
 		assertTrue( departments.hashCode()==departments1.hashCode() );
 	}
 	
 	@Test
 	public void canEqualTest() 
 	{
-		Departments departments1=new Departments();
 	    assertTrue(departments.canEqual(departments1));
 	}
 	
 	@Test
 	public void EqualTest() 
 	{
-		Departments departments1=new Departments();
 	    assertTrue(departments.equals(departments1));
 	}
 	
