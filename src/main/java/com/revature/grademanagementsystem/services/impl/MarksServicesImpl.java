@@ -32,6 +32,7 @@ public class MarksServicesImpl {
 	@Transactional
 	public List<Marks> viewAllMarks() {
 		return marksRepository.findAll();
+		
 	}
 
 	@Transactional
@@ -45,7 +46,6 @@ public class MarksServicesImpl {
 				String grade1 = gradesServices.getGrade(average);
 				if (grade1.equals(grade)) {
 					marksList = marksRepository.getMarksById(students.getRegistrationNumber());
-
 				}
 			}
 		} catch (DBException e) {
@@ -72,7 +72,6 @@ public class MarksServicesImpl {
 		if (mark != null) {
 			result = true;
 		}
-
 		return result;
 	}
 

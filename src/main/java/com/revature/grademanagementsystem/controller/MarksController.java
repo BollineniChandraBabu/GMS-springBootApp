@@ -77,7 +77,6 @@ public class MarksController {
 	public Object viewBySubject(@RequestParam("subjectdetails") String subjectdetails) throws ServiceException {
 		Object result = null;
 		try {
-
 			int subject = Integer.parseInt(subjectdetails);
 			result = viewBySubjectCode(subject);
 

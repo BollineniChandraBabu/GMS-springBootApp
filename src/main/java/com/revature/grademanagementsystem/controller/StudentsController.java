@@ -41,4 +41,9 @@ public class StudentsController {
 		return studentServices.getStudents();
 	}
 
+	@GetMapping("viewStudentsByName")
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<Students> viewStudentsByName(@RequestParam("name") String name) {
+		return studentServices.getStudentsByName(name);
+	}
 }
