@@ -1,6 +1,9 @@
 package com.revature.grademanagementsystem.services.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,4 +35,15 @@ public class StudentsServicesImpl {
 		}
 		return students.getRegistrationNumber();
 	}
+	
+	
+	@Transactional
+	public List<Students> getStudentsByName(String name) {
+		List<Students> studentsList= studentsRepository.findAll();
+		
+		Stream<Students> sequentialStream=studentsList.stream();
+	       List<Students> streamObject=sequentialStream.filter(p -> p.getName().startsWith(name) ).collect(Collectors.toList());
+	       return streamObject;		
+	}
+	
 }
